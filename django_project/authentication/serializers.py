@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Abonent
+from .models import User, Abonent, Device
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -13,3 +13,8 @@ class AbonentSerializer(serializers.ModelSerializer):
         model = Abonent
         fields = ("displayName", "description", "pictureId", "perimeterId", "is_admin", "pacsCode", "address",
                   "phoneNumber", "floor", "room", "cars", "isRegistered", "modified")
+
+class DeviceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Device
+        fields = ("serialNumber", "brand", "model", "platform")

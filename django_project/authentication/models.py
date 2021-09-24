@@ -30,6 +30,17 @@ class Abonent(models.Model):
     cars = models.CharField(max_length=30)
     isRegistered = models.BooleanField(default=False)
     modified = models.TextField(null=True, blank=True)
+    device = models.ForeignKey('Device', on_delete=models.PROTECT, null=True)
 
     def __str__(self):
         return self.displayName
+
+
+class Device(models.Model):
+    serialNumber = models.CharField(max_length=30)
+    brand = models.TextField(null=True, blank=True)
+    model = models.TextField(null=True, blank=True)
+    platform = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.serialNumber
