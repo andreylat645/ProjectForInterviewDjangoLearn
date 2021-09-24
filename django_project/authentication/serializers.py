@@ -9,10 +9,11 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class AbonentSerializer(serializers.ModelSerializer):
+    device = serializers.SlugRelatedField(slug_field="brand", read_only=True)
     class Meta:
         model = Abonent
         fields = ("displayName", "description", "pictureId", "perimeterId", "is_admin", "pacsCode", "address",
-                  "phoneNumber", "floor", "room", "cars", "isRegistered", "modified")
+                  "phoneNumber", "floor", "room", "cars", "isRegistered", "modified", "device")
 
 class DeviceSerializer(serializers.ModelSerializer):
     class Meta:
