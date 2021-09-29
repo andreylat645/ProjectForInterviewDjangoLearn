@@ -37,10 +37,24 @@ class Abonent(models.Model):
 
 
 class Device(models.Model):
+    PLATFORMS = (
+        (None, 'Platform'),
+        ('a', 'Android'),
+        ('i', 'IOS'),
+        ('w', 'Windows'),
+    )
+
+    BRANDS = (
+        (None, 'Brand'),
+        ('a', 'Apple'),
+        ('s', 'Samsung'),
+        ('n', 'Nokia'),
+    )
+
     serialNumber = models.CharField(max_length=30)
-    brand = models.TextField(null=True, blank=True)
+    brand = models.CharField(max_length=1, choices=BRANDS, default=None)
     model = models.TextField(null=True, blank=True)
-    platform = models.TextField(null=True, blank=True)
+    platform = models.CharField(max_length=1, choices=PLATFORMS, default=None)
 
     def __str__(self):
         return self.serialNumber
